@@ -10,9 +10,5 @@ Download & Installation
 ```
 change the folder name to "nevo_clothes"
 update db.sql to your database
-* Add this in your server.cfg:
-```
-   start nevo_clothes
-```
-
+Add this in your server.cfg: "start nevo_clothes"
 ```
