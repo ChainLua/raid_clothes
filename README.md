@@ -3,6 +3,7 @@
 ## Info
 ```
 Nopixel skin shop (skinchanger)
+Video - https://streamable.com/o8odxv?
 ```
 
 ## Requirements
