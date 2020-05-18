@@ -1,4 +1,4 @@
-# raid_vlothes | NoPixel Skin Shop / Skin Changer
+# raid_clothes | NoPixel Skin Shop / Skin Changer
 
 ## Requirements
 ```
