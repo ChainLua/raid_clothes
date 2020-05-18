@@ -1,4 +1,9 @@
-# raid_clothes | NoPixel Skin Shop / Skin Changer
+# raid_clothes
+
+## Info
+```
+Nopixel skin shop (skinchanger)
+```
 
 ## Requirements
 ```
@@ -8,7 +13,7 @@ mysql-async - https://github.com/brouznouf/fivem-mysql-async
 
 ## Download & Installation
 ```
-Change the folder name to "nevo_clothes"
+Change the folder name to "raid_clothes"
 Update db.sql to your database
-Add this in your server.cfg: "start nevo_clothes"
+Add this in your server.cfg: "start raid_clothes"
 ```
