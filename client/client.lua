@@ -806,17 +806,11 @@ end
 function Save(save)
     if save then
         data = GetCurrentPed()
-        TriggerServerEvent('nevo_clothes:save', data)
-       -- TriggerServerEvent("nevo_clothes:insert_character_current", data)
-      --  TriggerServerEvent("nevo_clothes:set_tats", currentTats)
+        TriggerServerEvent('raid_clothes:save', data)
     else
         LoadPed(oldPed)
     end
 
-   -- TriggerEvent("ressurection:relationships:norevive")
-  --  TriggerEvent("gangs:setDefaultRelations")
-  --  TriggerEvent("facewear:update")
-  --  TriggerEvent('np-weapons:getAmmo')
     CustomCamera('torso')
 end
 
@@ -892,7 +886,7 @@ Citizen.CreateThread(function()
                 --DisplayHelpText(menu[2])
 
                 if IsControlJustPressed(1, 38) then
-                    TriggerEvent('nevo_clothes:hasEnough',menu[1])
+                    TriggerEvent('raid_clothes:hasEnough',menu[1])
                     --TriggerServerEvent("clothing:checkMoney",menu[1],StoreCost)
                 end
             else
@@ -917,21 +911,21 @@ end)
 
 
 
-RegisterNetEvent("nevo_clothes:inService")
-AddEventHandler("nevo_clothes:inService", function(service)
+RegisterNetEvent("raid_clothes:inService")
+AddEventHandler("raid_clothes:inService", function(service)
     isService = service
 end)
 
-RegisterNetEvent("nevo_clothes:openmenu")
-AddEventHandler("nevo_clothes:openmenu", function()
+RegisterNetEvent("raid_clothes:openmenu")
+AddEventHandler("raid_clothes:openmenu", function()
     OpenMenu("clothesmenu")
 end)
 
 
-RegisterNetEvent("nevo_clothes:hasEnough")
-AddEventHandler("nevo_clothes:hasEnough", function(menu)
+RegisterNetEvent("raid_clothes:hasEnough")
+AddEventHandler("raid_clothes:hasEnough", function(menu)
     if menu == "tattoomenu" then
-        TriggerServerEvent("nevo_clothes:retrieve_tats")
+        TriggerServerEvent("raid_clothes:retrieve_tats")
         while currentTats == nil do
             Citizen.Wait(1)
         end
@@ -940,8 +934,8 @@ AddEventHandler("nevo_clothes:hasEnough", function(menu)
     OpenMenu(menu)
 end)
 
-RegisterNetEvent("nevo_clothes:setclothes")
-AddEventHandler("nevo_clothes:setclothes", function(data,alreadyExist)
+RegisterNetEvent("raid_clothes:setclothes")
+AddEventHandler("raid_clothes:setclothes", function(data,alreadyExist)
     player = GetPlayerPed(-1)
     local function setDefault()
         Citizen.CreateThread(function()
@@ -988,14 +982,14 @@ AddEventHandler("nevo_clothes:setclothes", function(data,alreadyExist)
     SetClothing(data.drawables, data.props, data.drawtextures, data.proptextures)
     Citizen.Wait(500)
 	TriggerEvent("facewear:update")
-    TriggerServerEvent("nevo_clothes:get_character_face")
-    TriggerServerEvent("nevo_clothes:retrieve_tats")
+    TriggerServerEvent("raid_clothes:get_character_face")
+    TriggerServerEvent("raid_clothes:retrieve_tats")
 	TriggerServerEvent("Police:getMeta")
 end)
 
 
-RegisterNetEvent("nevo_clothes:defaultReset")
-AddEventHandler("nevo_clothes:defaultReset", function()
+RegisterNetEvent("raid_clothes:defaultReset")
+AddEventHandler("raid_clothes:defaultReset", function()
     local LocalPlayer = exports["np-base"]:getModule("LocalPlayer")
     local gender = LocalPlayer:getCurrentCharacter().gender
     Citizen.Wait(1000)
@@ -1011,14 +1005,14 @@ AddEventHandler("nevo_clothes:defaultReset", function()
 end)
 
 
-RegisterNetEvent("nevo_clothes:settattoos")
-AddEventHandler("nevo_clothes:settattoos", function(playerTattoosList)
+RegisterNetEvent("raid_clothes:settattoos")
+AddEventHandler("raid_clothes:settattoos", function(playerTattoosList)
     currentTats = playerTattoosList
     SetTats(GetTats())
 end)
 
-RegisterNetEvent("nevo_clothes:setpedfeatures")
-AddEventHandler("nevo_clothes:setpedfeatures", function(data)
+RegisterNetEvent("raid_clothes:setpedfeatures")
+AddEventHandler("raid_clothes:setpedfeatures", function(data)
     player = GetPlayerPed(-1)
     if data == false then
         SetSkin(GetEntityModel(PlayerPedId()), true)
