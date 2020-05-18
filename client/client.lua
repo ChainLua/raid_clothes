@@ -39,8 +39,8 @@ AddEventHandler('playerSpawned', function()
 	end)
 end)
 
-RegisterNetEvent('nevo_clothes:loadclothes')
-AddEventHandler('nevo_clothes:loadclothes', function(data)
+RegisterNetEvent('raid_clothes:loadclothes')
+AddEventHandler('raid_clothes:loadclothes', function(data)
     LoadPed(data)
 end)
 
@@ -49,8 +49,8 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 	PlayerLoaded = true
 end)
 
-RegisterNetEvent('nevo_clothes:LoadYourClothes')
-AddEventHandler('nevo_clothes:LoadYourClothes', function()
+RegisterNetEvent('raid_clothes:LoadYourClothes')
+AddEventHandler('raid_clothes:LoadYourClothes', function()
 	LoadYourClothes()
 end)
 
@@ -59,8 +59,10 @@ RegisterCommand("loadskin", function()
 end)
 
 function LoadYourClothes()
-    ESX.TriggerServerCallback('nevo_clothes:getPlayerSkin', function(skin)
-        LoadPed(skin)
+    ESX.TriggerServerCallback('raid_clothes:getPlayerSkin', function(skin)
+	if skin ~= nil then
+           LoadPed(skin)
+	end
     end)
 end
 
@@ -238,8 +240,8 @@ function GetSkinTotal()
     }
 end
 
-RegisterNetEvent("nevo_clothes:toggleprop")
-AddEventHandler("nevo_clothes:toggleprop", function(type)
+RegisterNetEvent("raid_clothes:toggleprop")
+AddEventHandler("raid_clothes:toggleprop", function(type)
     local all = {}
     all.name = type
     ToggleProps(all)
