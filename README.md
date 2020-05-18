@@ -15,6 +15,6 @@ mysql-async - https://github.com/brouznouf/fivem-mysql-async
 ## Download & Installation
 ```
 Change the folder name to "raid_clothes"
-Update db.sql to your database
+Update raid_clothes.sql to your database
 Add this in your server.cfg: "start raid_clothes"
 ```
