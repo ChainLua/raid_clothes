@@ -2,51 +2,51 @@ ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-RegisterServerEvent('nevo_clothes:save')
-AddEventHandler('nevo_clothes:save', function(data)
+RegisterServerEvent('raid_clothes:save')
+AddEventHandler('raid_clothes:save', function(data)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
-	MySQL.Async.execute('UPDATE users SET `nevoskin` = @data WHERE identifier = @identifier',
+	MySQL.Async.execute('UPDATE users SET `skin` = @data WHERE identifier = @identifier',
 	{
 		['@data']       = json.encode(data),
 		['@identifier'] = xPlayer.identifier
 	})
 end)
 
-RegisterServerEvent('nevo_clothes:loadclothes')
-AddEventHandler('nevo_clothes:loadclothes', function()
+RegisterServerEvent('raid_clothes:loadclothes')
+AddEventHandler('raid_clothes:loadclothes', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	MySQL.Async.fetchAll('SELECT * FROM users WHERE identifier = @identifier', {
 		['@identifier'] = xPlayer.identifier
 	}, function(users)
 		local user = users[1]
-		local nevoskin = nil
+		local skin = nil
 
-		if user.nevoskin ~= nil then
-			nevoskin = json.decode(user.nevoskin)
+		if user.skin ~= nil then
+			skin = json.decode(user.skin)
 		end
 
-		TriggerClientEvent('nevo_clothes:loadclothes', nevoskin)
+		TriggerClientEvent('raid_clothes:loadclothes', skin)
 	end)
 
 
 end)
 
-ESX.RegisterServerCallback('nevo_clothes:getPlayerSkin', function(source, cb)
+ESX.RegisterServerCallback('raid_clothes:getPlayerSkin', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	MySQL.Async.fetchAll('SELECT * FROM users WHERE identifier = @identifier', {
 		['@identifier'] = xPlayer.identifier
 	}, function(users)
 		local user = users[1]
-		local nevoskin = nil
+		local skin = nil
 
 
-		if user.nevoskin ~= nil then
-			nevoskin = json.decode(user.nevoskin)
+		if user.skin ~= nil then
+			skin = json.decode(user.skin)
 		end
 
-		cb(nevoskin)
+		cb(skin)
 	end)
 end)
