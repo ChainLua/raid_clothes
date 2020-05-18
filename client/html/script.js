@@ -123,11 +123,11 @@ $(function () {
     })
 
     function CloseMenu(save) {
-        $.post('http://nevo_clothes/escape', JSON.stringify({save:save}));
+        $.post('http://raid_clothes/escape', JSON.stringify({save:save}));
     }
 
     $(document).on('contextmenu', function() {
-        $.post('http://nevo_clothes/togglecursor', JSON.stringify({}));
+        $.post('http://raid_clothes/togglecursor', JSON.stringify({}));
     })
 
     $('.button-menu').on('click', function () {
@@ -218,7 +218,7 @@ $(function () {
 
     $('#skin_string').find('input').keypress(function (e) {
         if (e.which == 13) {
-            $.post('http://nevo_clothes/customskin', JSON.stringify($(this).val()));
+            $.post('http://raid_clothes/customskin', JSON.stringify($(this).val()));
         }
     })
 
@@ -268,7 +268,7 @@ $(function () {
             }
 
             if ($(ele).parents('.panel').attr('id') == "skins") {
-                $.post('http://nevo_clothes/setped', JSON.stringify({
+                $.post('http://raid_clothes/setped', JSON.stringify({
                     "name": $(ele).attr('id'),
                     "value": $(ele).val()
                 }))
@@ -279,7 +279,7 @@ $(function () {
                     nameId = "hair"
                 else
                     nameId = $(ele).parent().parent().parent().attr('id').split('#')[0]
-                $.post('http://nevo_clothes/updateclothes', JSON.stringify({
+                $.post('http://raid_clothes/updateclothes', JSON.stringify({
                     "name": nameId,
                     "value": inputs.eq(0).val(),
                     "texture": inputs.eq(1).val()
@@ -334,7 +334,7 @@ $(function () {
             categEles.each(function () {
                 tats[$(this).attr('id')] = $(this).find('.input-number').val();
             })
-            $.post('http://nevo_clothes/settats', JSON.stringify({tats}))
+            $.post('http://raid_clothes/settats', JSON.stringify({tats}))
         }
     }
 
@@ -367,47 +367,47 @@ $(function () {
 
     $('.tog_head').on('click', function() {
         toggleCam($(this));
-        $.post('http://nevo_clothes/switchcam', JSON.stringify({name: 'head'}))
+        $.post('http://raid_clothes/switchcam', JSON.stringify({name: 'head'}))
     })
     $('.tog_torso').on('click', function() {
         toggleCam($(this));
-        $.post('http://nevo_clothes/switchcam', JSON.stringify({name: 'torso'}))
+        $.post('http://raid_clothes/switchcam', JSON.stringify({name: 'torso'}))
     })
     $('.tog_leg').on('click', function() {
         toggleCam($(this));
-        $.post('http://nevo_clothes/switchcam', JSON.stringify({name: 'leg'}))
+        $.post('http://raid_clothes/switchcam', JSON.stringify({name: 'leg'}))
     })
     $('.tog_cam').on('click', function() {
         toggleCam($(this));
-        $.post('http://nevo_clothes/switchcam', JSON.stringify({name: 'cam'}))
+        $.post('http://raid_clothes/switchcam', JSON.stringify({name: 'cam'}))
     })
 
 
     $('.tog_hat').on('click', function() {
-        $.post('http://nevo_clothes/toggleclothes', JSON.stringify({name: "hats"}))
+        $.post('http://raid_clothes/toggleclothes', JSON.stringify({name: "hats"}))
     })
     $('.tog_glasses').on('click', function() {
-        $.post('http://nevo_clothes/toggleclothes', JSON.stringify({name: "glasses"}))
+        $.post('http://raid_clothes/toggleclothes', JSON.stringify({name: "glasses"}))
     })
     $('.tog_tops').on('click', function() {
         // dont look at this :)
-        $.post('http://nevo_clothes/toggleclothes', JSON.stringify({name: "jackets"}))
-        $.post('http://nevo_clothes/toggleclothes', JSON.stringify({name: "undershirts"}))
-        $.post('http://nevo_clothes/toggleclothes', JSON.stringify({name: "torsos"}))
-        $.post('http://nevo_clothes/toggleclothes', JSON.stringify({name: "vest"}))
-        $.post('http://nevo_clothes/toggleclothes', JSON.stringify({name: "bags"}))
-        $.post('http://nevo_clothes/toggleclothes', JSON.stringify({name: "neck"}))
-        $.post('http://nevo_clothes/toggleclothes', JSON.stringify({name: "decals"}))
+        $.post('http://raid_clothes/toggleclothes', JSON.stringify({name: "jackets"}))
+        $.post('http://raid_clothes/toggleclothes', JSON.stringify({name: "undershirts"}))
+        $.post('http://raid_clothes/toggleclothes', JSON.stringify({name: "torsos"}))
+        $.post('http://raid_clothes/toggleclothes', JSON.stringify({name: "vest"}))
+        $.post('http://raid_clothes/toggleclothes', JSON.stringify({name: "bags"}))
+        $.post('http://raid_clothes/toggleclothes', JSON.stringify({name: "neck"}))
+        $.post('http://raid_clothes/toggleclothes', JSON.stringify({name: "decals"}))
     })
     $('.tog_legs').on('click', function() {
-        $.post('http://nevo_clothes/toggleclothes', JSON.stringify({name: "legs"}))
+        $.post('http://raid_clothes/toggleclothes', JSON.stringify({name: "legs"}))
     })
     $('.tog_mask').on('click', function() {
-        $.post('http://nevo_clothes/toggleclothes', JSON.stringify({name: "masks"}))
+        $.post('http://raid_clothes/toggleclothes', JSON.stringify({name: "masks"}))
     })
 
     $('#reset').on('click', function() {
-        $.post('http://nevo_clothes/resetped', JSON.stringify({}))
+        $.post('http://raid_clothes/resetped', JSON.stringify({}))
     })
 
 
@@ -435,7 +435,7 @@ $(function () {
         }
 
         if (_key) {
-            $.post('http://nevo_clothes/rotate', JSON.stringify({key: _key}))
+            $.post('http://raid_clothes/rotate', JSON.stringify({key: _key}))
         }
     }, 50))
 
@@ -483,11 +483,11 @@ $(function () {
         headBlend["shapeMix"] = $("#shapeMix").val()
         headBlend["skinMix"] = $("#skinMix").val()
         headBlend["thirdMix"] = $("#thirdMix").val()
-        $.post('http://nevo_clothes/saveheadblend', JSON.stringify(headBlend))
+        $.post('http://raid_clothes/saveheadblend', JSON.stringify(headBlend))
     }
 
     function SaveFaceShape(ele) {
-        $.post('http://nevo_clothes/savefacefeatures', JSON.stringify({name: ele.attr('data-value'), scale: ele.val()}))
+        $.post('http://raid_clothes/savefacefeatures', JSON.stringify({name: ele.attr('data-value'), scale: ele.val()}))
     }
 
     function SetupHeadStructure(data) {
@@ -518,7 +518,7 @@ $(function () {
         var id = ele.parents('.panel').attr('id')
         var inputs = ele.parents('.panel-bottom').find('input')
         let opacity = inputs.eq(1).val() ? inputs.eq(1).val() : 0
-        $.post('http://nevo_clothes/saveheadoverlay', JSON.stringify({
+        $.post('http://raid_clothes/saveheadoverlay', JSON.stringify({
             name: id,
             value: inputs.eq(0).val(),
             opacity: opacity
@@ -543,13 +543,13 @@ $(function () {
             $(this).addClass('active')
 
             if ($(this).parents('.panel').hasClass('hair')) {
-                $.post('http://nevo_clothes/savehaircolor', JSON.stringify({
+                $.post('http://raid_clothes/savehaircolor', JSON.stringify({
                     firstColour: palettes.eq(0).find('.active').attr('value'),
                     secondColour: palettes.eq(1).find('.active').attr('value')
                 }));
             }
             else {
-                $.post('http://nevo_clothes/saveheadoverlaycolor', JSON.stringify({
+                $.post('http://raid_clothes/saveheadoverlaycolor', JSON.stringify({
                     firstColour: palettes.eq(0).find('.active').attr('value'),
                     secondColour: palettes.eq(1).find('.active').attr('value'),
                     name: $(this).parents('.panel').attr('id')
